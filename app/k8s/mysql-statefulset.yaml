@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: sql
+spec:
+  selector:
+    matchLabels:
+      app: sql-app
+  serviceName: service-sql
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: sql-app
+    spec:
+      containers:                                     
+      - name: sql
+        image: mysql:latest
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: rootpassword
+        - name: MYSQL_DATABASE
+          value: classicmodels
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - mountPath: /var/lib/mysql
+        name: sql-volume
+  volumeClaimTemplates:
+  - metadata:
+      name: sql-volume
+    spec:
+      storageClassName: "sql-db"
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi

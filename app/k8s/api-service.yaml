@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-api
+  labels:
+    app: api-app
+    tier: database
+spec:
+  type: NodePort 
+  ports:
+    - port: 8000
+      targetPort: 3306
+      Nodeport: 30080
+  selector:
+    app: api-app
