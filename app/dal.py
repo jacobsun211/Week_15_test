@@ -1,5 +1,6 @@
 from typing import List, Dict, Any
 
+
 def get_customers_by_credit_limit_range():
     """Return customers with credit limits outside the normal range."""
     pass
