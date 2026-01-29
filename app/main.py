@@ -1,3 +1,6 @@
+# uvicorn main:app --reload
+
+
 from fastapi import FastAPI
 from db_init import init_database
 
