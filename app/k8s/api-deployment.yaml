@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-api
+  labels:
+    app: api-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: api-app
+  template:
+    metadata:
+      labels:
+        app: api-app
+    spec:
+      containers:
+      - name: api
+        image: jacobsun211/sql-query-image:v1
+        ports:
+        - containerPort: 8000
+
+
