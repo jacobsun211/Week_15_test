@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: service-api
+  name: api-service
   labels:
     app: api-app
     tier: database
